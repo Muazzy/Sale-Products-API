@@ -1,3 +1,5 @@
-2023/06/18-01:48:18.932 14d34 Reusing MANIFEST /home/muazzam/node js projects/sale_products_api/tmp/Default/Local Storage/leveldb/MANIFEST-000001
-2023/06/18-01:48:18.932 14d34 Recovering log #135
-2023/06/18-01:48:18.933 14d34 Reusing old log /home/muazzam/node js projects/sale_products_api/tmp/Default/Local Storage/leveldb/000135.log 
+2023/06/24-16:31:24.428 731b Reusing MANIFEST /home/muazzam/node js projects/sale_products_api/tmp/Default/Local Storage/leveldb/MANIFEST-000001
+2023/06/24-16:31:24.428 731b Recovering log #205
+2023/06/24-16:31:24.428 731b Level-0 table #207: started
+2023/06/24-16:31:24.430 731b Level-0 table #207: 45219 bytes OK
+2023/06/24-16:31:24.432 731b Delete type=0 #205
