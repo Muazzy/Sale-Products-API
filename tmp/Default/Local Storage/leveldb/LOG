@@ -1,15 +1,14 @@
-2023/06/25-01:48:05.027 3 Reusing MANIFEST /home/muazzam/node js projects/sale_products_api/tmp/Default/Local Storage/leveldb/MANIFEST-000001
-2023/06/25-01:48:05.028 3 Recovering log #669
-2023/06/25-01:48:05.028 3 Reusing old log /home/muazzam/node js projects/sale_products_api/tmp/Default/Local Storage/leveldb/000669.log 
-2023/06/25-01:48:12.791 3 Level-0 table #673: started
-2023/06/25-01:48:12.803 3 Level-0 table #673: 46321 bytes OK
-2023/06/25-01:48:12.804 3 Delete type=0 #669
-2023/06/25-01:48:12.805 3 Compacting 4@0 + 1@1 files
-2023/06/25-01:48:12.806 3 Generated table #674@0: 27 keys, 65262 bytes
-2023/06/25-01:48:12.806 3 Compacted 4@0 + 1@1 files => 65262 bytes
-2023/06/25-01:48:12.807 3 compacted to: files[ 0 1 1 0 0 0 0 ]
-2023/06/25-01:48:12.808 3 Delete type=2 #670
-2023/06/25-01:48:12.808 3 Delete type=2 #662
-2023/06/25-01:48:12.808 3 Delete type=2 #667
-2023/06/25-01:48:12.808 3 Delete type=2 #673
-2023/06/25-01:48:12.808 3 Delete type=2 #664
+2023/06/25-12:43:13.795 324e Reusing MANIFEST /home/muazzam/node js projects/sale_products_api/tmp/Default/Local Storage/leveldb/MANIFEST-000001
+2023/06/25-12:43:13.796 324e Recovering log #694
+2023/06/25-12:43:13.796 324e Level-0 table #697: started
+2023/06/25-12:43:13.798 324e Level-0 table #697: 45397 bytes OK
+2023/06/25-12:43:13.799 324e Delete type=0 #694
+2023/06/25-12:43:13.800 324e Compacting 4@0 + 1@1 files
+2023/06/25-12:43:13.804 324e Generated table #699@0: 27 keys, 65198 bytes
+2023/06/25-12:43:13.804 324e Compacted 4@0 + 1@1 files => 65198 bytes
+2023/06/25-12:43:13.805 324e compacted to: files[ 0 1 1 0 0 0 0 ]
+2023/06/25-12:43:13.805 324e Delete type=2 #687
+2023/06/25-12:43:13.805 324e Delete type=2 #692
+2023/06/25-12:43:13.805 324e Delete type=2 #689
+2023/06/25-12:43:13.805 324e Delete type=2 #695
+2023/06/25-12:43:13.805 324e Delete type=2 #697
