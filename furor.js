@@ -48,6 +48,12 @@ async function fetchFurrorProducts(numOfPages) {
         await page.waitForSelector(saleProductsSelector) //list of main sale products
         await page.waitForSelector(productCardSelector)
 
+        //for the navigation
+        await page.waitForSelector(navButtonsListSelector)
+        await page.waitForSelector(nextButton)
+        await page.waitForSelector('a')
+
+
         const saleProductHandles = await page.$$(productCardSelector);
 
         // console.log(saleProductHandles.length)
@@ -183,6 +189,8 @@ async function getTotalFurrorPages(requiredPages) {
         )
     }
     console.log(totalPages)
+
+    await browser.close()
     return totalPages
 }
 
@@ -190,5 +198,4 @@ async function getTotalFurrorPages(requiredPages) {
 module.exports = {
     'fetchFurrorProducts': fetchFurrorProducts,
     'getTotalFurrorPages': getTotalFurrorPages,
-
 }
