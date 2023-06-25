@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer')
+require("dotenv").config()
 
 const furrorBaseUrl = "https://furorjeans.com"
 
@@ -15,14 +16,26 @@ const navButtonsListSelector = '.ProductList > nav > ul.CategoryPagination > li.
 const nextButton = navButtonsListSelector + ":last-child"
 
 
+const puppeteerLaunchArgs = {
+    // headless: false,
+    defaultViewport: false,
+    args: [
+        "--disable-setuid-sandbox",
+        "--no-sandbox",
+        "--single-process",
+        "--no-zygote",
+    ],
+    executablePath:
+        process.env.NODE_ENV === "production"
+            ? process.env.PUPPETEER_EXECUTABLE_PATH
+            : puppeteer.executablePath(),
+    headless: true
+}
+
 async function fetchFurrorProducts(numOfPages) {
     let saleProducts = []
 
-    const browser = await puppeteer.launch({
-        // headless: false,
-        defaultViewport: false,
-        userDataDir: "./tmp",
-    })
+    const browser = await puppeteer.launch(puppeteerLaunchArgs)
 
     const page = await browser.newPage()
     await page.goto(`${furrorBaseUrl}/sale`)
@@ -135,11 +148,8 @@ async function getTotalFurrorPages(requiredPages) {
 
     //if the required pages are less then we dont need to check further to the end
 
-    const browser = await puppeteer.launch({
-        // headless: false,
-        defaultViewport: false,
-        userDataDir: "./tmp",
-    })
+    const browser = await puppeteer.launch(puppeteerLaunchArgs)
+
 
     const page = await browser.newPage()
     await page.goto(`${furrorBaseUrl}/sale`)
