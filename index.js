@@ -2,6 +2,7 @@ const PORT = process.env.PORT || 8069
 
 const express = require('express')
 const furror = require('./furor')
+const fetchFittedProducts = require('./fitted')
 
 const app = express()
 
@@ -14,10 +15,10 @@ app.get('/', (req, res) => {
 app.get('/api', (req, res) => {
     res.json({
         'paths': {
-            1: "furror",
-            2: "outfitters",
+            1: "/api/furror",
+            2: "/api/fitted",
         },
-        'author': 'Meer M. Muazzam',
+        'author': 'Muazzam Soomro',
         'version': '1.0.0'
     })
 })
@@ -53,6 +54,18 @@ app.get('/api/furror', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch Furror products' });
     }
 });
+
+
+app.get('/api/fitted', async (req, res) => {
+    try {
+        const saleProducts = await fetchFittedProducts();
+        res.json(saleProducts);
+    } catch (error) {
+        console.error('Error fetching Fitted products:', error);
+        res.status(500).json({ error: 'Failed to fetch Fitted products' });
+    }
+});
+
 
 
 app.listen(PORT, () => {

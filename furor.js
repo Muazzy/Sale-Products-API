@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer')
+const priceFormatter = require('./price_formatter')
 require("dotenv").config()
 
 const furrorBaseUrl = "https://furorjeans.com"
@@ -111,6 +112,8 @@ async function fetchFurrorProducts(numOfPages) {
             }
 
             if (title.length != 0 && img.length != 0 && productLink.length != 0 && discountPrice.length != 0 && originalPrice.length != 0) {
+                originalPrice = priceFormatter(originalPrice)
+                discountPrice = priceFormatter(discountPrice)
                 saleProducts.push({
                     title, img, productLink, originalPrice, discountPrice
                 })
@@ -149,10 +152,13 @@ async function fetchFurrorProducts(numOfPages) {
     return saleProducts
 }
 
-
+//if the required pages are less then we dont need to check further to the end
 async function getTotalFurrorPages(requiredPages) {
+    let totalPages = 1
 
-    //if the required pages are less then we dont need to check further to the end
+    if (requiredPages === 1) {
+        return totalPages
+    }
 
     const browser = await puppeteer.launch(puppeteerLaunchArgs)
 
@@ -160,7 +166,6 @@ async function getTotalFurrorPages(requiredPages) {
     const page = await browser.newPage()
     await page.goto(`${furrorBaseUrl}/sale`)
 
-    let totalPages = 1
 
 
     while (true) {
