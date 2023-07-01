@@ -1,29 +1,29 @@
-const PORT = process.env.PORT || 8069
+const PORT = process.env.PORT || 8060
 
 const express = require('express')
 const furror = require('./furor')
 const fetchFittedProducts = require('./fitted')
+const fetchOutfitterProducts = require('./outfitters')
 
 const app = express()
 
 
 
 app.get('/', (req, res) => {
-    res.json("Sale Products APIProductCard. Developed with ❤️ by Meer M. Muazzam")
+    res.json("Welcom to Sale Products API, Developed with ❤️ by Meer M. Muazzam")
 })
 
 app.get('/api', (req, res) => {
     res.json({
         'paths': {
-            1: "/api/furror",
-            2: "/api/fitted",
+            1: { 'path': "https://sale-products-api.onrender.com/api/furror", 'optional query': "pages (number, pages > 0)", 'example': 'https://sale-products-api.onrender.com/api/furror?pages=2', },
+            2: { 'path': "https://sale-products-api.onrender.com/api/fitted", 'optional query': "", 'example': 'https://sale-products-api.onrender.com/api/fitted', },
+            3: { 'path': "https://sale-products-api.onrender.com/api/outfitters", 'optional query': "products (number, products > 0)", 'example': 'https://sale-products-api.onrender.com/api/outfitters?products=20', },
         },
-        'author': 'Muazzam Soomro',
+        'author': 'Meer M. Muazzam',
         'version': '1.0.0'
     })
 })
-
-
 
 
 // the request will look like this: /api/furror?pages=3
@@ -66,6 +66,29 @@ app.get('/api/fitted', async (req, res) => {
     }
 });
 
+// the request will look like this: /api/outfitters?products=20
+app.get('/api/outfitters', async (req, res) => {
+    try {
+        let saleProducts = []
+        let requiredProducts = 10 //default number of products
+
+        if (req.query.products != null) {
+            requiredProducts = parseInt(req.query.products)
+            if (isNaN(requiredProducts) || requiredProducts < 1) {
+                res.status(400).json({ error: 'Invalid number of products' })
+                return;
+            }
+        }
+
+        saleProducts = await fetchOutfitterProducts(requiredProducts)
+        res.json(saleProducts)
+
+    }
+    catch (error) {
+        console.error('Error fetching Outfitters products:', error)
+        res.status(500).json({ error: 'Failed to fetch Outfitters products' })
+    }
+});
 
 
 app.listen(PORT, () => {

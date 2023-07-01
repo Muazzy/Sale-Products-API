@@ -13,9 +13,21 @@ const discountPriceSelector = '.product-pd .product-discount'
 const productLinkSelector = '.product-title a'
 
 
+//for fixing the socket connection timeout issue
+function newAbortSignal(timeoutMs) {
+    const abortController = new AbortController();
+    setTimeout(() => abortController.abort(), timeoutMs || 0);
+
+    return abortController.signal;
+}
+
 async function fetchFittedProducts() {
     try {
-        const response = await axios.get(fittedBaseUrl);
+        const response = await axios.get(fittedBaseUrl, {
+            timeout: 1000 * 60, //60 seconds
+            signal: newAbortSignal(60 * 1000) //Aborts request after 5 seconds
+        });
+
         const $ = cheerio.load(response.data);
         const saleProducts = [];
 
@@ -58,8 +70,8 @@ async function fetchFittedProducts() {
 
         return saleProducts;
     } catch (error) {
-        console.error('Error fetching Fitted products:', error);
-        throw error; // Rethrow the error to be handled by the caller. i.e in the router
+        console.error('Error fetching Fitted products:', error.message);
+        throw error; // Rethrow the error to be handled by the caller. i.e in the api route
     }
 }
 
