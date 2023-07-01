@@ -1,9 +1,14 @@
 const axios = require('axios')
 const cheerio = require('cheerio')
 const priceFormatter = require('./price_formatter')
+require("dotenv").config()
 
-const fittedBaseUrl = 'https://fittedshop.com/category/sale'
 
+// BASE URL's
+const fittedBaseUrl = 'https://fittedshop.com'
+const salePath = '/category/sale'
+
+//SELECTORS
 const saleProductSelector = '.product-singleArea'
 
 const titleSelector = '.product-title a'
@@ -23,7 +28,7 @@ function newAbortSignal(timeoutMs) {
 
 async function fetchFittedProducts() {
     try {
-        const response = await axios.get(fittedBaseUrl, {
+        const response = await axios.get(fittedBaseUrl + salePath, {
             timeout: 1000 * 60, //60 seconds
             signal: newAbortSignal(60 * 1000) //Aborts request after 5 seconds
         });

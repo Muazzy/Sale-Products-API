@@ -44,6 +44,7 @@ async function fetchOutfittersProducts(requiredProducts) {
         const page = await browser.newPage()
 
         page.setDefaultNavigationTimeout(0) //this will set the navigation timeout to infinite. i.e it will wait for navigation as long as its needed
+        page.setDefaultTimeout(0) //disable the timeout. i.e waitforSelector or anyother timeout will be disabled
 
         await page.goto(`${outfittersBaseUrl}${salePath}`)
 
@@ -51,9 +52,9 @@ async function fetchOutfittersProducts(requiredProducts) {
 
         while (requiredProducts > saleProducts.length) {
             // Wait for the page to fully load and execute JavaScript
-            await page.waitForSelector(saleProductsGridSelector, { timeout: 1000 * 60 }) //list of main sale products
-            await page.waitForSelector(saleProductSelector, { timeout: 1000 * 60 })
-            await page.waitForSelector('a', { timeout: 1000 * 60 })
+            await page.waitForSelector(saleProductsGridSelector) //list of main sale products
+            await page.waitForSelector(saleProductSelector)
+            await page.waitForSelector('a')
 
 
             const saleProductHandles = await page.$$(saleProductSelector)
@@ -136,9 +137,9 @@ async function fetchOutfittersProducts(requiredProducts) {
             );
 
             // Wait for the page to fully load and execute JavaScript
-            await page.waitForSelector(saleProductsGridSelector, { timeout: 1000 * 60 }) //list of main sale products
-            await page.waitForSelector(saleProductSelector, { timeout: 1000 * 60 })
-            await page.waitForSelector('a', { timeout: 1000 * 60 })
+            await page.waitForSelector(saleProductsGridSelector) //list of main sale products
+            await page.waitForSelector(saleProductSelector)
+            await page.waitForSelector('a')
 
 
             const currentProductsCount = (await page.$$(saleProductSelector)).length;

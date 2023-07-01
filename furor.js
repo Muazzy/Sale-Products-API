@@ -41,6 +41,10 @@ async function fetchFurrorProducts(numOfPages) {
         const browser = await puppeteer.launch(puppeteerLaunchArgs)
 
         const page = await browser.newPage()
+
+        page.setDefaultNavigationTimeout(0) //this will set the navigation timeout to infinite. i.e it will wait for navigation as long as its needed
+        page.setDefaultTimeout(0) //disable the timeout. i.e waitforSelector or anyother timeout will be disabled
+
         await page.goto(`${furrorBaseUrl}${salePath}`)
 
         let currentPage = 1
