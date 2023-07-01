@@ -6,16 +6,16 @@ require("dotenv").config()
 const furrorBaseUrl = "https://furorjeans.com"
 const salePath = "/sale"
 
-//SELECTORS
-const saleProductsSelector = '.CategoryPage-ProductListWrapper > div'
-const productCardSelector = '.ProductCard'
-const titleSelector = '.ProductCard-Content > p.ProductCard-Name'
-const imgSelector = '.ProductCard-FigureReview > figure > div > img'
-const productLinkSelector = 'a'
-const discountPriceSelector = '.ProductPrice span'
-const originalPriceSelector = '.ProductPrice-HighPrice'
+// SELECTORS
+const saleProductsSelector = process.env.FURROR_SALE_PRODUCTS_SELECTOR
+const productCardSelector = process.env.FURROR_PRODUCT_CARD_SELECTOR
+const titleSelector = process.env.FURROR_TITLE_SELECTOR
+const imgSelector = process.env.FURROR_IMG_SELECTOR
+const productLinkSelector = process.env.FURROR_PRODUCT_LINK_SELECTOR
+const discountPriceSelector = process.env.FURROR_DISCOUNT_PRICE_SELECTOR
+const originalPriceSelector = process.env.FURROR_ORIGINAL_PRICE_SELECTOR
 //for the pagination (navigation)
-const navButtonsListSelector = '.ProductList > nav > ul.CategoryPagination > li.CategoryPagination-ListItem' // for the next button
+const navButtonsListSelector = process.env.FURROR_NAV_BUTTONS_SELECTOR // for the next button
 const nextButton = navButtonsListSelector + ":last-child"
 
 

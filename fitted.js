@@ -9,13 +9,13 @@ const fittedBaseUrl = 'https://fittedshop.com'
 const salePath = '/category/sale'
 
 //SELECTORS
-const saleProductSelector = '.product-singleArea'
+const saleProductSelector = process.env.FITTED_SALE_PRODUCT_SELECTOR;
 
-const titleSelector = '.product-title a'
-const imgSelector = '.product-img img'
-const originalPriceSelector = '.product-pd .product-price'
-const discountPriceSelector = '.product-pd .product-discount'
-const productLinkSelector = '.product-title a'
+const titleSelector = process.env.FITTED_TITLE_SELECTOR;
+const imgSelector = process.env.FITTED_IMG_SELECTOR;
+const originalPriceSelector = process.env.FITTED_ORIGINAL_PRICE_SELECTOR;
+const discountPriceSelector = process.env.FITTED_DISCOUNT_PRICE_SELECTOR;
+const productLinkSelector = process.env.FITTED_PRODUCT_LINK_SELECTOR;
 
 
 //for fixing the socket connection timeout issue

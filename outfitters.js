@@ -19,15 +19,14 @@ const puppeteerLaunchArgs = {
 }
 
 //SELECTORS
-const saleProductsGridSelector = '#product-grid'
-const saleProductSelector = '.grid__item'
+const saleProductsGridSelector = process.env.OUTFITTERS_SALE_PRODUCTS_GRID_SELECTOR
+const saleProductSelector = process.env.OUTFITTERS_SALE_PRODUCT_SELECTOR
 
-const titleSelector = '.card__heading a.product-link-main'
-const originalPriceSelector = '.price__sale .price-item--regular .money'
-const discountPriceSelector = '.price__sale .price-item--sale .money'
-const imgSelector = '.card__media .media img.motion-reduce.image-second'
-const productLinkSelector = 'a.product-link-main'
-
+const titleSelector = process.env.OUTFITTERS_TITLE_SELECTOR
+const originalPriceSelector = process.env.OUTFITTERS_ORIGINAL_PRICE_SELECTOR
+const discountPriceSelector = process.env.OUTFITTERS_DISCOUNT_PRICE_SELECTOR
+const imgSelector = process.env.OUTFITTERS_IMG_SELECTOR
+const productLinkSelector = process.env.OUTFITTERS_PRODUCT_LINK_SELECTOR
 
 //BASE URL's
 const outfittersBaseUrl = 'https://outfitters.com.pk'
@@ -36,7 +35,6 @@ const salePath = '/collections/men-early-summer-sale'
 const imgBaseUrl = 'https:'
 
 async function fetchOutfittersProducts(requiredProducts) {
-
     try {
         let saleProducts = []
 
@@ -128,7 +126,7 @@ async function fetchOutfittersProducts(requiredProducts) {
                     break;
                 }
             }
-
+            //TODO: fix the issue where on navigating quickly to the bottom of page do not trigger the page to load products sometimes
             //PAGINATION/NAVIGATION LOGIC FOR INFINITE SCROLL
             previousHeight = await page.evaluate("document.body.scrollHeight");
             await page.evaluate("window.scrollTo(0, document.body.scrollHeight)");
@@ -159,7 +157,6 @@ async function fetchOutfittersProducts(requiredProducts) {
         console.error('Error fetching Outfitters products:', error)
         throw error; // Rethrow the error to be handled by the caller. i.e in the api route
     }
-
 }
 
 module.exports = fetchOutfittersProducts
