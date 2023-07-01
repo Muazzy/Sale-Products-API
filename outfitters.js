@@ -4,7 +4,6 @@ require("dotenv").config()
 
 
 const puppeteerLaunchArgs = {
-    // headless: false,
     defaultViewport: false,
     args: [
         "--disable-setuid-sandbox",
@@ -16,7 +15,7 @@ const puppeteerLaunchArgs = {
         process.env.NODE_ENV === "production"
             ? process.env.PUPPETEER_EXECUTABLE_PATH
             : puppeteer.executablePath(),
-    headless: false
+    headless: true
 }
 
 //SELECTORS
