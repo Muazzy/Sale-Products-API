@@ -34,6 +34,16 @@ const salePath = '/collections/men-early-summer-sale'
 //for product image
 const imgBaseUrl = 'https:'
 
+
+
+/**
+ * The function fetchOutfittersProducts is an asynchronous function that uses Puppeteer to scrape a
+ * website and fetch a specified number of sale products from the Outfitters website.
+ * @param requiredProducts - The `requiredProducts` parameter is the number of products that you want
+ * to fetch from the Outfitters website. The function will continue fetching products until it reaches
+ * the specified number of products or until there are no more products available on the website.
+ * @returns an array of sale products from the Outfitters website.
+ */
 async function fetchOutfittersProducts(requiredProducts) {
     try {
         let saleProducts = []
@@ -147,7 +157,6 @@ async function fetchOutfittersProducts(requiredProducts) {
                 break;
             }
         }
-
         console.log(saleProducts.length)
         // close the browser after fetching all the products
         await browser.close()

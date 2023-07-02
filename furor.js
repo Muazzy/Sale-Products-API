@@ -34,6 +34,14 @@ const puppeteerLaunchArgs = {
     headless: true
 }
 
+/**
+ * The function `fetchFurrorProducts` uses Puppeteer to scrape a website and fetches sale products from
+ * multiple pages.
+ * @param numOfPages - The `numOfPages` parameter is the number of pages you want to fetch products
+ * from. It determines how many times the code will navigate to the next page and fetch products.
+ * @returns The function `fetchFurrorProducts` returns a promise that resolves to an array of sale
+ * products.
+ */
 async function fetchFurrorProducts(numOfPages) {
     try {
         let saleProducts = []
@@ -163,7 +171,14 @@ async function fetchFurrorProducts(numOfPages) {
 
 }
 
-//if the required pages are less then we dont need to check further to the end
+/**
+ * The function `getTotalFurrorPages` uses Puppeteer to navigate through pages and determine the total
+ * number of pages on a website called Furror.
+ * @param requiredPages - The `requiredPages` parameter is the number of pages that you want to check
+ * for a specific condition or perform some action on.
+ * @returns the total number of pages required.
+ */
+
 async function getTotalFurrorPages(requiredPages) {
     let totalPages = 1
 
@@ -189,6 +204,7 @@ async function getTotalFurrorPages(requiredPages) {
             return button.querySelector('a') !== null
         });
 
+        //if the required pages are less then the complete available pages on the website then we dont need to check further
         if (!isNextPageAvailable || requiredPages <= totalPages) {
             await browser.close()
             break

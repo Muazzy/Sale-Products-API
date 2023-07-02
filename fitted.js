@@ -26,6 +26,14 @@ function newAbortSignal(timeoutMs) {
     return abortController.signal;
 }
 
+/**
+ * The function fetchFittedProducts fetches sale products from a website and returns an array of
+ * formatted product data.
+ * @returns The function `fetchFittedProducts` returns an array of sale products. Each sale product is
+ * an object with properties such as `title`, `img`, `productLink`, `originalPrice`, and
+ * `discountPrice`.
+ */
+
 async function fetchFittedProducts() {
     try {
         const response = await axios.get(fittedBaseUrl + salePath, {
