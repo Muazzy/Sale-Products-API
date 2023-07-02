@@ -101,8 +101,8 @@ repo
 ### ✔️ Prerequisites
 
 Before you begin, ensure that you have the following prerequisites installed:
-> - [ℹ️ node js](https://nodejs.org/)
-> - [ℹ️ npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+> - [node js](https://nodejs.org/)
+> - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 ### 📦 Installation
 
